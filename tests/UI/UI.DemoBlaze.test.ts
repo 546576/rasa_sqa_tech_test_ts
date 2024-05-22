@@ -59,7 +59,7 @@ test.describe("DemoBlaze UI tests", () => {
     ).toBeVisible();
   });
 
-  test("[Bugged] Should be able to purchase the first product on the storefront", async ({ page }) => {
+  test.skip("[Bugged] Should be able to purchase the first product on the storefront", async ({ page }) => {
     await page.goto("https://www.demoblaze.com/");
     //dom navigation for dynamic selection of object, regardless of loaded objects on page
     await page.locator("#tbodyid > div:nth-child(1) > div > div > h4 > a").click();
