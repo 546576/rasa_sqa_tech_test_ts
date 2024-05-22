@@ -66,7 +66,6 @@ test.describe("DemoBlaze UI tests", () => {
     let product = page.locator("#name").textContent();
     //Playwright clicking on the following button renders the application unresponsive 
     await page.getByText("Add to cart").click();
-    await page.waitForTimeout(2000);
     page.on('dialog', async dialog => {
       await dialog.accept();
     });
@@ -110,6 +109,7 @@ test.describe("DemoBlaze UI tests", () => {
     await page.locator("#loginusername").press("Tab");
     await page.locator("#loginpassword").fill("incorrect");
     await page.getByRole("button", { name: "Log in" }).click();
+    await page.waitForTimeout(2000);
     page.on('dialog', async dialog => {
       expect(dialog.type()).toContain("Wrong password.");
       await dialog.accept();
@@ -120,6 +120,7 @@ test.describe("DemoBlaze UI tests", () => {
     await page.locator("#loginusername").fill("incorrect");
     await page.locator("#loginusername").press("Tab");
     await page.locator("#loginpassword").fill("password");
+    await page.waitForTimeout(2000);
     page.on('dialog', async dialog => {
       expect(dialog.type()).toContain("User does not exist.");
       await dialog.accept();
